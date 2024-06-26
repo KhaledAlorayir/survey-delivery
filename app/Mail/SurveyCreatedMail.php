@@ -14,8 +14,8 @@ class SurveyCreatedMail extends Mailable
     use Queueable, SerializesModels;
 
     public function __construct(
-        protected string $surveyUrl,
-        protected string $domainName,
+        public string $surveyUrl,
+        public string $domainName,
     )
     {
     }

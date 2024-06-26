@@ -1,7 +1,7 @@
 @component('mail::message')
-# Introduction
+greetings {{$domainName}} admin, a new survey has been created with the following url
 
-The body of your message.
+{{$surveyUrl}}
 
 Thanks,<br>
 {{ config('app.name') }}

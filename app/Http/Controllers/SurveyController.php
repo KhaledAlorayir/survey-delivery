@@ -19,10 +19,8 @@ class SurveyController extends Controller
         ]);
 
         collect($request->domains)->each(function ($domain) use ($request) {
-            Mail::to($domain['admin_email'])
-                ->queue(new SurveyCreatedMail($request->survey_url, $domain['domain_name']));
-
-            Log::info('send to ' . $domain['admin_email']);
+            Mail::to($domain['admin_email'])->queue(new SurveyCreatedMail($request->survey_url, $domain['domain_name']));
+            Log::info('new survey email for:' . $domain['admin_email'] . ' is queued');
         });
 
         return response()->json(['message' => 'Survey submitted successfully.']);
